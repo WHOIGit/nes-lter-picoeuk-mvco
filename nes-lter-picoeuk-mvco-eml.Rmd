@@ -1,0 +1,174 @@
+---
+title: "NES-LTER picoeuk at MVCO"
+author: "Stace Beaulieu"
+date: "27 April 2020"
+output: html_document
+---
+
+## R Markdown Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE)
+
+# clear workspace for local development
+rm(list = ls())
+
+# set environment timezone to UTC
+Sys.setenv(TZ = "UTC")
+
+# assign relative path to directory
+dir <- "/Users/sbeaulieu/Desktop/github/WHOIGit/nes-lter-picoeuk-mvco/" 
+# set as working directory
+setwd(dir)
+
+# define source for functions developed for the EDI packaging workflow
+source("edi-utilities.R")
+
+# install necessary libraries
+# install.packages("devtools")
+# install_github("EDIorg/EMLassemblyline")
+# remotes::install_github("EDIorg/dataCleanr")
+
+# define R packages to require
+libs <- c("tidyverse", "readxl", "lubridate", "devtools", "EMLassemblyline", "EML", "maps", "xml2", "dataCleanr")
+# load libraries
+lapply(libs, require, character.only = TRUE)
+```
+
+## Load data table revise column headers and add columns here
+
+```{r}
+
+picoeuk <- read_csv("Picoeukaryote_Cellsperml.csv")
+
+# remove rows when entire row is NA
+picoeukclean <- filter_all(picoeuk, all_vars(!is.na(.)))
+
+# convert picoeukclean$Time_UTC to ISO8601 format
+# library(dataCleanr)
+newtime <- iso8601_convert(picoeukclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
+newtime <- rename(newtime, Time_UTC = x)
+picoeukclean <- full_join(picoeukclean, newtime, by = "Time_UTC")
+
+# Note the table does not have any remaining NaT or NaN
+# view summary stats
+summary(picoeukclean)
+
+# rename columns
+picoeukclean <- rename(picoeukclean, eventDate = x_converted)
+picoeukclean <- rename(picoeukclean, abundance_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
+
+# add columns decimalLatitude, decimalLongitude, depth
+picoeukclean$decimalLatitude = 41.3250
+picoeukclean$decimalLongitude = -70.5667
+picoeukclean$depth = 4
+
+# strip extraneous columns Time_UTC and format
+picoeukclean <- select(picoeukclean, -Time_UTC, -format)
+
+# round abundance to 2 past decimal
+picoeukclean$abundance_picoeuk <- round(picoeukclean$abundance_picoeuk, digits = 2)
+
+```
+
+
+## QA: Map Sampling Locations
+
+Call the map_locs function from edi-utility.R to map the sampling locations. Perform a visual check.
+
+```{r}
+
+# Map Check
+# Note Package `maps` required for `map_data`
+
+map_locs(df = picoeukclean, xvar = "decimalLongitude", yvar = "decimalLatitude", region = "transect", colorvar = NULL)
+
+
+```
+
+## Additional quality assurance for data values
+
+```{r}
+# these steps in addition to summary stats for quality assurance
+
+# all eventDate must be unique
+length(unique(picoeukclean$eventDate))
+
+# summary stats above make sure abundance_picoeuk does not exceed
+# toomany <- picoeukclean %>% filter(abundance_picoeuk > 1000000)
+
+# summary stats above make sure no NAs in abundance
+# abundNA <- picoeukclean %>% filter(is.na(abundance_picoeuk))
+
+
+```
+
+## Column Header Organization and write files for upload to EDI
+```{r}
+# # define headers for columns in desired order
+nes_lter_picoeuk_mvco_headers <- c("eventDate","abundance_picoeuk", "decimalLatitude","decimalLongitude","depth")
+
+# reorder columns as necessary
+nes_lter_picoeuk_mvco <- picoeukclean[, nes_lter_picoeuk_mvco_headers]
+
+# write files for upload to EDI
+write.csv(nes_lter_picoeuk_mvco, file.path(dir, "/project_folder/nes-lter-picoeuk-mvco.csv"),
+          row.names = FALSE)
+
+```
+
+
+## EML Assembly: nes-lter-picoeuk-mvco
+
+This chunk outputs the final xml file for EDI through the following steps:
+
+Step 1: Populating EML Assembly Line templates with metadata
+Step 2: Calculating the geospatial and temporal coverage 
+Step 3: Making the XML file 
+Step 4: Inserting a custom NES-LTER parent project node 
+
+```{r}
+
+# define input for EML assembly
+metadata <- "nes-lter-picoeuk-mvco-info"  # xlsx file
+project_folder <- "project_folder/"
+edi_data <- "nes-lter-picoeuk-mvco"  # data file
+file_descriptions <- "ADD DESCRIPTION"
+pkg_id <- "knb-lter-nes.10.1"
+
+# Make EML Templates
+# copy abstract, additional_info, and methods txt files into project_folder
+# or else this next step will produce empty files
+
+xlsx_to_template(metadata.path = paste0(dir, metadata),
+                 output.path = paste0(dir, project_folder),
+                 edi.filename = edi_data,
+                 rights = "CCBY")
+
+# Data Coverage
+# isolate date and geospatial columns for input
+date_col <- as.Date(picoeukclean$eventDate)
+lat_col <- picoeukclean$decimalLatitude
+lon_col <- picoeukclean$decimalLongitude
+# run function to determine geospatial and temporal coverage
+coverage <- data_coverage(dates = date_col, lat = lat_col, lon = lon_col)
+
+# Make EML
+make_eml(path = paste0(dir, project_folder),
+         dataset.title = "Abundance of eukaryote picophytoplankton from a moored submersible flow cytometer at Martha's Vineyard Coastal Observatory, ongoing since 2003",
+         data.table = paste0(edi_data, ".csv"),
+         data.table.description = file_descriptions,
+         temporal.coverage = c(coverage$startdate, coverage$enddate),
+         geographic.description = "Martha's Vineyard Coastal Observatory",
+         geographic.coordinates = c(coverage$North, coverage$East, coverage$South, coverage$West),
+         maintenance.description = "ongoing",
+         user.id = "NES",
+         user.domain = "LTER",
+         package.id = pkg_id)
+
+# Insert Custom Project Node
+project_insert(edi_pkg = pkg_id, 
+               xml.path = paste0(dir, project_folder))
+```
+
+## Add semantic annotations to EML 2.2

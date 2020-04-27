@@ -1,0 +1,15 @@
+keyword	keywordThesaurus
+populations	LTER Core Research Areas
+phytoplankton	LTER Controlled Vocabulary
+abundance	LTER Controlled Vocabulary
+marine	LTER Controlled Vocabulary
+oceanography	LTER Controlled Vocabulary
+eukaryote picophytoplankton	SeaDataCloud Flow Cytometry Standardised Cluster Names
+biological data	NODC Data Types Thesaurus
+phytoplankton	NODC Data Types Thesaurus
+biological	NODC Observation Types Thesaurus
+continuous	NODC Observation Types Thesaurus
+plankton	NODC Observation Types Thesaurus
+fixed platform	NODC Platform Names Thesaurus
+flow cytometry	Global Change Master Directory (GCMD) Instrument Keywords
+Northwest Atlantic Ocean	SeaVoX water bodies
