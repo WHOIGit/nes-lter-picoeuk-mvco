@@ -1,7 +1,7 @@
 ---
 title: "NES-LTER picoeuk at MVCO"
 author: "Stace Beaulieu"
-date: "27 April 2020"
+date: "8 May 2020"
 output: html_document
 ---
 
@@ -39,7 +39,8 @@ lapply(libs, require, character.only = TRUE)
 
 ```{r}
 
-picoeuk <- read_csv("Picoeukaryote_Cellsperml.csv")
+# picoeuk <- read_csv("Picoeukaryote_Cellsperml.csv") # data file through 2016
+picoeuk <- read_csv("Picoeukaryote_Raw_Counts.csv")  # data file through 2018
 
 # remove rows when entire row is NA
 picoeukclean <- filter_all(picoeuk, all_vars(!is.na(.)))
@@ -56,7 +57,7 @@ summary(picoeukclean)
 
 # rename columns
 picoeukclean <- rename(picoeukclean, eventDate = x_converted)
-picoeukclean <- rename(picoeukclean, abundance_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
+picoeukclean <- rename(picoeukclean, concentration_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
 
 # add columns decimalLatitude, decimalLongitude, depth
 picoeukclean$decimalLatitude = 41.3250
@@ -67,7 +68,7 @@ picoeukclean$depth = 4
 picoeukclean <- select(picoeukclean, -Time_UTC, -format)
 
 # round abundance to 2 past decimal
-picoeukclean$abundance_picoeuk <- round(picoeukclean$abundance_picoeuk, digits = 2)
+picoeukclean$concentration_picoeuk <- round(picoeukclean$concentration_picoeuk, digits = 2)
 
 ```
 
@@ -106,7 +107,7 @@ length(unique(picoeukclean$eventDate))
 ## Column Header Organization and write files for upload to EDI
 ```{r}
 # # define headers for columns in desired order
-nes_lter_picoeuk_mvco_headers <- c("eventDate","abundance_picoeuk", "decimalLatitude","decimalLongitude","depth")
+nes_lter_picoeuk_mvco_headers <- c("eventDate","concentration_picoeuk", "decimalLatitude","decimalLongitude","depth")
 
 # reorder columns as necessary
 nes_lter_picoeuk_mvco <- picoeukclean[, nes_lter_picoeuk_mvco_headers]
@@ -133,7 +134,7 @@ Step 4: Inserting a custom NES-LTER parent project node
 metadata <- "nes-lter-picoeuk-mvco-info"  # xlsx file
 project_folder <- "project_folder/"
 edi_data <- "nes-lter-picoeuk-mvco"  # data file
-file_descriptions <- "ADD DESCRIPTION"
+file_descriptions <- "Data table with eukaryote picophytoplankton cell concentration and time sampled"
 pkg_id <- "knb-lter-nes.10.1"
 
 # Make EML Templates
