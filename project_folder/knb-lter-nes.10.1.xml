@@ -29,6 +29,7 @@
         <surName>Olson</surName>
       </individualName>
       <organizationName>Woods Hole Oceanographic Institution</organizationName>
+      <electronicMailAddress>rolson@whoi.edu</electronicMailAddress>
     </creator>
     <associatedParty>
       <individualName>
@@ -55,9 +56,10 @@
       </individualName>
       <organizationName>Northeast U.S. Shelf LTER</organizationName>
       <electronicMailAddress>bfowler@whoi.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0001-8655-7253</userId>
       <role>Metadataprovider</role>
     </associatedParty>
-    <pubDate>2020-05-08</pubDate>
+    <pubDate>2020-05-11</pubDate>
     <abstract>
       <para>
   This is a 16-year time series of the abundance of eukaryote
@@ -65,9 +67,10 @@
   Observatory, about 3 km south of Katama Beach, Edgartown,
   Massachusetts, USA. Picophytoplankton were sensed in situ by a
   submersible flow cytometer (FlowCytobot, or FCB). Sampling frequency
-  was continuous at hourly intervals with some exceptions (e.g., winter
-  in some years). For years 2003, 2004, and 2006, this dataset is a new
-  version of previously published data available in NOAA NCEI.
+  was continuous at approximately 20-minute intervals binned to hourly
+  resolution with some exceptions (e.g., winter in some years). For
+  years 2003, 2004, and 2006, this dataset is a new version of
+  previously published data available in NOAA NCEI.
 </para>
     </abstract>
     <keywordSet>
@@ -170,19 +173,20 @@
     Data were acquired by a moored submersible flow cytometer
     (FlowCytobot, or FCB) that was mounted on the offshore tower at
     Martha’s Vineyard Coastal Observatory. Sampling frequency was
-    continuous at hourly intervals with some exceptions (e.g., approx. 4
-    mos at the beginning of 2004, 2005, and 2006, August 2007, December
-    2008, February and October 2014, approx. 3 mos at the beginning of
-    2015 and 2017, and February 2016). The FCB is equipped with a
-    syringe pump for volumetric sample delivery and is used to count
+    continuous at approximately 20-minute intervals with some exceptions
+    (e.g., approx. 4 mos at the beginning of 2004, 2005, and 2006,
+    August 2007, December 2008, February and October 2014, approx. 3 mos
+    at the beginning of 2015 and 2017, and February 2016). The FCB
+    (described by Olson et al., 2003,
+    https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count
     cells for populations of photoautotrophs (Synechococcus and
-    picoeukaryotes) and heterotrophic prokaryotes. The FCB runs bead
-    samples every 20 hours, with results informing the cell
-    classification process. Data for Synechococcus are available
-    elsewhere (https://doi.org/10.5061/dryad.jm8s7). Data includes small
-    eukaryotes that exceed the typical picoplankton size, consistent
-    with the definition that cell cycle within this group may generate
-    cells with size greater than 2 microns
+    picoeukaryotes) and heterotrophic prokaryotes. The FCB automatically
+    runs bead samples approximately once per day. Data for Synechococcus
+    are available elsewhere (Hunter-Cevera et al., 2017,
+    https://doi.org/10.5061/dryad.jm8s7). Data includes small eukaryotes
+    that exceed the typical picoplankton size, consistent with the
+    definition that cell cycle within this group may generate cells with
+    size greater than 2 microns
     http://vocab.nerc.ac.uk/collection/F02/current/F0200004/.
   </para>
           </section>
@@ -190,9 +194,10 @@
             <title>Data processing</title>
             <para>
     Data processing involved classifying observations as eukaryote
-    picoplankton based on their scattering and fluorescent signatures,
-    then calculating concentrations based on the volume of water sampled
-    at each time point, with code available in GitHub:
+    picoplankton based on their scattering and fluorescence signatures,
+    calculating concentrations based on the volume of water sampled at
+    each time point, and binning to hourly resolution with code
+    available in GitHub:
     https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time
     of sampling needed to be corrected from local to UTC for some of the
     early years in the time series. Data for the entire time series were
@@ -201,11 +206,10 @@
     Hole Oceanographic Institution (2010) available in NOAA NCEI
     Oceanographic Data Archive: NODC Accession 0002299, NODC Accession
     0002722, NODC Accession 0036656. These data serve as input to a
-    model with software available at
-    https://github.com/beefowler/Eukaryote_Procedures [will be able to
-    cite Zenodo]. These data serve as the raw data for the derived data
-    products in [we can cite your PNAS paper here as well as link to DOI
-    in EDI landing page].
+    division rate model by Fowler et al., 2020,
+    http://doi.org/10.5281/zenodo.3708062. These data serve as the raw
+    data for the derived data products in Fowler et al., 2020,
+    https://doi.org/10.1073/pnas.1918439117.
   </para>
           </section>
           <section>
