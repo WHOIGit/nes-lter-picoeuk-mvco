@@ -1,7 +1,7 @@
 ---
 title: "NES-LTER picoeuk at MVCO"
 author: "Stace Beaulieu"
-date: "8 May 2020"
+date: "28 May 2020"
 output: html_document
 ---
 
@@ -133,7 +133,8 @@ Step 4: Inserting a custom NES-LTER parent project node
 # define input for EML assembly
 metadata <- "nes-lter-picoeuk-mvco-info"  # xlsx file
 project_folder <- "project_folder/"
-edi_data <- "nes-lter-picoeuk-mvco"  # data file
+# edi_data <- "nes-lter-picoeuk-mvco"  # data file created by above script
+edi_data <- "nes-lter-picoeuk-mvco-2018" # data file with T replaced by space in ISO8601 time format
 file_descriptions <- "Data table with eukaryote picophytoplankton cell concentration and time sampled"
 pkg_id <- "knb-lter-nes.10.1"
 

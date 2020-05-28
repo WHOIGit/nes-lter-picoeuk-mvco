@@ -1,7 +1,7 @@
 # Data acquisition
 
 Data were acquired by a moored submersible flow cytometer (FlowCytobot, or FCB) that was mounted on the offshore tower at Martha's Vineyard Coastal Observatory. Sampling frequency was continuous at approximately 20-minute intervals with some exceptions (e.g., approx. 4 mos at the beginning of 2004, 2005, and 2006, August 2007, December 2008, February and October 2014, approx. 3 mos at the beginning of 2015 and 2017, and February 2016).
-The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count cells for populations of photoautotrophs (Synechococcus and picoeukaryotes) and heterotrophic prokaryotes. The FCB automatically runs bead samples approximately once per day. Data for Synechococcus are available elsewhere (Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7). Data includes small eukaryotes that exceed the typical picoplankton size, consistent with the definition that cell cycle within this group may generate cells with size greater than 2 microns http://vocab.nerc.ac.uk/collection/F02/current/F0200004/.
+The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count cells for populations of photoautotrophs (Synechococcus and picoeukaryotes). The FCB automatically runs bead samples approximately once per day. Data for Synechococcus are available elsewhere (Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7). Data for picoeukaryotes include small eukaryotes that exceed the typical picoplankton size, consistent with the definition that cell cycle within this group may generate cells with size greater than 2 microns (http://vocab.nerc.ac.uk/collection/F02/current/F0200004/).
 
 # Data processing
 

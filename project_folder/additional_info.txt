@@ -1,1 +1,1 @@
-﻿
+In the next version of this data package we may consider adding columns for scientificName Eukaryota and scientificNameID urn:lsid:algaebase.org:taxname:86701

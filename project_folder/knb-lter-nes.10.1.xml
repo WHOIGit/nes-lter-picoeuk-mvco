@@ -59,19 +59,9 @@
       <userId directory="https://orcid.org">https://orcid.org/0000-0001-8655-7253</userId>
       <role>Metadataprovider</role>
     </associatedParty>
-    <pubDate>2020-05-11</pubDate>
+    <pubDate>2020-05-28</pubDate>
     <abstract>
-      <para>
-  This is a 16-year time series of the abundance of eukaryote
-  picophytoplankton at 4 meters depth at the Martha’s Vineyard Coastal
-  Observatory, about 3 km south of Katama Beach, Edgartown,
-  Massachusetts, USA. Picophytoplankton were sensed in situ by a
-  submersible flow cytometer (FlowCytobot, or FCB). Sampling frequency
-  was continuous at approximately 20-minute intervals binned to hourly
-  resolution with some exceptions (e.g., winter in some years). For
-  years 2003, 2004, and 2006, this dataset is a new version of
-  previously published data available in NOAA NCEI.
-</para>
+      <para>This is a 16-year time series of the abundance of eukaryote picophytoplankton at 4 meters depth at the Martha's Vineyard Coastal Observatory, about 3 km south of Katama Beach, Edgartown, Massachusetts, USA. Picophytoplankton were sensed in situ by a submersible flow cytometer (FlowCytobot, or FCB). Sampling frequency was continuous at approximately 20-minute intervals binned to hourly resolution with some exceptions (e.g., winter in some years). For years 2003, 2004, and 2006, this dataset is a new version of previously published data available in NOAA NCEI.</para>
     </abstract>
     <keywordSet>
       <keyword>populations</keyword>
@@ -111,28 +101,11 @@
       <keyword>Northwest Atlantic Ocean</keyword>
       <keywordThesaurus>SeaVoX water bodies</keywordThesaurus>
     </keywordSet>
+    <additionalInfo>
+      <para>In the next version of this data package we may consider adding columns for scientificName Eukaryota and scientificNameID urn:lsid:algaebase.org:taxname:86701</para>
+    </additionalInfo>
     <intellectualRights>
-      <para>
-  This information is released under the Creative Commons license -
-  Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/).
-  The consumer of these data ("Data User" herein) is required
-  to cite it appropriately in any publication that results from its use.
-  The Data User should realize that these data may be actively used by
-  others for ongoing research and that coordination may be necessary to
-  prevent duplicate publication. The Data User is urged to contact the
-  authors of these data if any questions about methodology or results
-  occur. Where appropriate, the Data User is encouraged to consider
-  collaboration or co-authorship with the authors. The Data User should
-  realize that misinterpretation of data may occur if used out of
-  context of the original study. While substantial efforts are made to
-  ensure the accuracy of data and associated documentation, complete
-  accuracy of data sets cannot be guaranteed. All data are made
-  available "as is." The Data User should be aware, however,
-  that data are updated periodically and it is the responsibility of the
-  Data User to check for new versions of the data. The data authors and
-  the repository where these data were obtained shall not be liable for
-  damages resulting from any use or misinterpretation of the data. Thank
-  you.
+      <para>This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data (\"Data User\" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available \"as is.\" The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.
 </para>
     </intellectualRights>
     <coverage>
@@ -167,63 +140,15 @@
     <methods>
       <methodStep>
         <description>
-          <section>
-            <title>Data acquisition</title>
-            <para>
-    Data were acquired by a moored submersible flow cytometer
-    (FlowCytobot, or FCB) that was mounted on the offshore tower at
-    Martha’s Vineyard Coastal Observatory. Sampling frequency was
-    continuous at approximately 20-minute intervals with some exceptions
-    (e.g., approx. 4 mos at the beginning of 2004, 2005, and 2006,
-    August 2007, December 2008, February and October 2014, approx. 3 mos
-    at the beginning of 2015 and 2017, and February 2016). The FCB
-    (described by Olson et al., 2003,
-    https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count
-    cells for populations of photoautotrophs (Synechococcus and
-    picoeukaryotes) and heterotrophic prokaryotes. The FCB automatically
-    runs bead samples approximately once per day. Data for Synechococcus
-    are available elsewhere (Hunter-Cevera et al., 2017,
-    https://doi.org/10.5061/dryad.jm8s7). Data includes small eukaryotes
-    that exceed the typical picoplankton size, consistent with the
-    definition that cell cycle within this group may generate cells with
-    size greater than 2 microns
-    http://vocab.nerc.ac.uk/collection/F02/current/F0200004/.
-  </para>
-          </section>
-          <section>
-            <title>Data processing</title>
-            <para>
-    Data processing involved classifying observations as eukaryote
-    picoplankton based on their scattering and fluorescence signatures,
-    calculating concentrations based on the volume of water sampled at
-    each time point, and binning to hourly resolution with code
-    available in GitHub:
-    https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time
-    of sampling needed to be corrected from local to UTC for some of the
-    early years in the time series. Data for the entire time series were
-    processed; thus, for years 2003, 2004, and 2006, this dataset is a
-    new version of data previously published by Robert J. Olson, Woods
-    Hole Oceanographic Institution (2010) available in NOAA NCEI
-    Oceanographic Data Archive: NODC Accession 0002299, NODC Accession
-    0002722, NODC Accession 0036656. These data serve as input to a
-    division rate model by Fowler et al., 2020,
-    http://doi.org/10.5281/zenodo.3708062. These data serve as the raw
-    data for the derived data products in Fowler et al., 2020,
-    https://doi.org/10.1073/pnas.1918439117.
-  </para>
-          </section>
-          <section>
-            <title>Additional data cleaning and quality assurance</title>
-            <para>
-    Additional data cleaning and metadata template assembly to align
-    with SeaDataCloud SDN data management protocols for Flow Cytometer
-    data were performed with code available on GitHub:
-    https://github.com/WHOIGit/nes-lter-picoeuk-mvco. We added
-    attributes to provide spatial context to the data table and assured
-    that the temporal coverage and values for cell concentration were
-    within expected ranges.
-  </para>
-          </section>
+          <para># Data acquisition</para>
+          <para>Data were acquired by a moored submersible flow cytometer (FlowCytobot, or FCB) that was mounted on the offshore tower at Martha's Vineyard Coastal Observatory. Sampling frequency was continuous at approximately 20-minute intervals with some exceptions (e.g., approx. 4 mos at the beginning of 2004, 2005, and 2006, August 2007, December 2008, February and October 2014, approx. 3 mos at the beginning of 2015 and 2017, and February 2016).&#13;
+The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count cells for populations of photoautotrophs (Synechococcus and picoeukaryotes). The FCB automatically runs bead samples approximately once per day. Data for Synechococcus are available elsewhere (Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7). Data for picoeukaryotes include small eukaryotes that exceed the typical picoplankton size, consistent with the definition that cell cycle within this group may generate cells with size greater than 2 microns (http://vocab.nerc.ac.uk/collection/F02/current/F0200004/).</para>
+          <para># Data processing</para>
+          <para>Data processing involved classifying observations as eukaryote picoplankton based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time of sampling needed to be corrected from local to UTC for some of the early years in the time series. Data for the entire time series were processed; thus, for years 2003, 2004, and 2006, this dataset is a new version of data previously published by Robert J. Olson, Woods Hole Oceanographic Institution (2010) available in NOAA NCEI Oceanographic Data Archive: NODC Accession 0002299, NODC Accession 0002722, NODC Accession 0036656.&#13;
+These data serve as input to a division rate model by Fowler et al., 2020, http://doi.org/10.5281/zenodo.3708062.&#13;
+These data serve as the raw data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.</para>
+          <para># Additional data cleaning and quality assurance</para>
+          <para>Additional data cleaning and metadata template assembly to align with SeaDataCloud SDN data  management protocols for Flow Cytometer data were performed with code available on GitHub: https://github.com/WHOIGit/nes-lter-picoeuk-mvco. We added attributes to provide spatial context to the data table and assured that the temporal coverage and values for cell concentration were within expected ranges.</para>
         </description>
       </methodStep>
     </methods>
@@ -327,12 +252,12 @@
       </funding>
     </project>
     <dataTable>
-      <entityName>nes-lter-picoeuk-mvco.csv</entityName>
+      <entityName>nes-lter-picoeuk-mvco-2018.csv</entityName>
       <entityDescription>Data table with eukaryote picophytoplankton cell concentration and time sampled</entityDescription>
       <physical>
-        <objectName>nes-lter-picoeuk-mvco.csv</objectName>
+        <objectName>nes-lter-picoeuk-mvco-2018.csv</objectName>
         <size unit="bytes">4533895</size>
-        <authentication method="MD5">02026e01710f896fbd36fd17e6f67d5c</authentication>
+        <authentication method="MD5">fc32a1ec9d1ae6f69e065665badd34e4</authentication>
         <dataFormat>
           <textFormat>
             <numHeaderLines>1</numHeaderLines>
@@ -345,6 +270,21 @@
         </dataFormat>
       </physical>
       <attributeList>
+        <attribute>
+          <attributeName>eventDate</attributeName>
+          <attributeDefinition>date and time in UTC for the sampling event http://rs.tdwg.org/dwc/terms/eventDate</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
         <attribute>
           <attributeName>concentration_picoeuk</attributeName>
           <attributeDefinition>abundance per unit volume of eukaryote picophytoplankton http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ http://vocab.nerc.ac.uk/collection/F02/current/F0200004/</attributeDefinition>
@@ -362,21 +302,6 @@
                 </bounds>
               </numericDomain>
             </ratio>
-          </measurementScale>
-          <missingValueCode>
-            <code>NaN</code>
-            <codeExplanation>Missing value</codeExplanation>
-          </missingValueCode>
-        </attribute>
-        <attribute>
-          <attributeName>eventDate</attributeName>
-          <attributeDefinition>date and time in UTC for the sampling event http://rs.tdwg.org/dwc/terms/eventDate</attributeDefinition>
-          <storageType>date</storageType>
-          <measurementScale>
-            <dateTime>
-              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
-              <dateTimeDomain/>
-            </dateTime>
           </measurementScale>
           <missingValueCode>
             <code>NaN</code>

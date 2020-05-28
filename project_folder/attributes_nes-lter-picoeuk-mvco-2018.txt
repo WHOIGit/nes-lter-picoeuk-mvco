@@ -1,0 +1,6 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+eventDate	date and time in UTC for the sampling event http://rs.tdwg.org/dwc/terms/eventDate	Date		YYYY-MM-DD hh:mm:ss	NaN	Missing value
+concentration_picoeuk	abundance per unit volume of eukaryote picophytoplankton http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ http://vocab.nerc.ac.uk/collection/F02/current/F0200004/	numeric	numberPerMilliliter		NaN	Missing value
+decimalLatitude	geographic latitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLatitude	numeric	degree		NaN	Missing value
+decimalLongitude	geographic longitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLongitude	numeric	degree		NaN	Missing value
+depth	depth of sample below sea surface http://vocab.nerc.ac.uk/collection/P09/current/DEPH/	numeric	meter		NaN	Missing value
