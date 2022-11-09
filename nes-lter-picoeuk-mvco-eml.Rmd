@@ -1,7 +1,7 @@
 ---
-title: "NES-LTER picoeuk at MVCO"
+title: "NES-LTER picoeuk and Syn at MVCO"
 author: "Stace Beaulieu"
-date: "29 May 2020"
+date: "2022-11-08"
 output: html_document
 ---
 
@@ -17,7 +17,8 @@ rm(list = ls())
 Sys.setenv(TZ = "UTC")
 
 # assign relative path to directory
-dir <- "/Users/sbeaulieu/Desktop/github/WHOIGit/nes-lter-picoeuk-mvco/" 
+# dir <- "/Users/sbeaulieu/Desktop/github/WHOIGit/nes-lter-picoeuk-mvco/" 
+dir <- "/Users/sbeaulieu/Desktop/github/nes-lter-picoeuk-mvco/"
 # set as working directory
 setwd(dir)
 
@@ -40,35 +41,45 @@ lapply(libs, require, character.only = TRUE)
 ```{r}
 
 # picoeuk <- read_csv("Picoeukaryote_Cellsperml.csv") # data file through 2016
-picoeuk <- read_csv("Picoeukaryote_Raw_Counts.csv")  # data file through 2018
+# picoeuk <- read_csv("Picoeukaryote_Raw_Counts.csv")  # data file through 2018
+pico <- read_csv("AllPicos_Cellsperml.csv")  # data file inclusive of Syn and picoeuk
 
 # remove rows when entire row is NA
-picoeukclean <- filter_all(picoeuk, all_vars(!is.na(.)))
+# picoeukclean <- filter_all(picoeuk, all_vars(!is.na(.)))
+picoclean <- filter_all(pico, all_vars(!is.na(.)))
 
 # convert picoeukclean$Time_UTC to ISO8601 format
 # library(dataCleanr)
-newtime <- iso8601_convert(picoeukclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
+# newtime <- iso8601_convert(picoeukclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
+# newtime <- rename(newtime, Time_UTC = x)
+# picoeukclean <- full_join(picoeukclean, newtime, by = "Time_UTC")
+newtime <- iso8601_convert(picoclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
 newtime <- rename(newtime, Time_UTC = x)
-picoeukclean <- full_join(picoeukclean, newtime, by = "Time_UTC")
+picoclean <- full_join(picoclean, newtime, by = "Time_UTC")
 
 # Note the table does not have any remaining NaT or NaN
 # view summary stats
-summary(picoeukclean)
+summary(picoclean)
 
 # rename columns
-picoeukclean <- rename(picoeukclean, eventDate = x_converted)
-picoeukclean <- rename(picoeukclean, concentration_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
+# picoeukclean <- rename(picoeukclean, eventDate = x_converted)
+# picoeukclean <- rename(picoeukclean, concentration_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
+picoclean <- rename(picoclean, date = x_converted)
+picoclean <- rename(picoclean, redeuk_leq_20um_cells_per_ml = Picoeukaryote_Concentration_Cells_per_mL)
+picoclean <- rename(picoclean, syn_cells_per_ml = Synechococcus_Concentration_Cells_per_mL)
 
 # add columns decimalLatitude, decimalLongitude, depth
-picoeukclean$decimalLatitude = 41.3250
-picoeukclean$decimalLongitude = -70.5667
-picoeukclean$depth = 4
+picoclean$latitude = 41.3250
+picoclean$longitude = -70.5667
+picoclean$depth = 4
 
 # strip extraneous columns Time_UTC and format
-picoeukclean <- select(picoeukclean, -Time_UTC, -format)
+picoclean <- select(picoclean, -Time_UTC, -format)
 
 # round abundance to 2 past decimal
-picoeukclean$concentration_picoeuk <- round(picoeukclean$concentration_picoeuk, digits = 2)
+# picoeukclean$concentration_picoeuk <- round(picoeukclean$concentration_picoeuk, digits = 2)
+picoclean$redeuk_leq_20um_cells_per_ml <- round(picoclean$redeuk_leq_20um_cells_per_ml, digits = 2)
+picoclean$syn_cells_per_ml <- round(picoclean$syn_cells_per_ml, digits = 2)
 
 ```
 
@@ -82,7 +93,7 @@ Call the map_locs function from edi-utility.R to map the sampling locations. Per
 # Map Check
 # Note Package `maps` required for `map_data`
 
-map_locs(df = picoeukclean, xvar = "decimalLongitude", yvar = "decimalLatitude", region = "transect", colorvar = NULL)
+map_locs(df = picoclean, xvar = "longitude", yvar = "latitude", region = "transect", colorvar = NULL)
 
 
 ```
@@ -92,8 +103,8 @@ map_locs(df = picoeukclean, xvar = "decimalLongitude", yvar = "decimalLatitude",
 ```{r}
 # these steps in addition to summary stats for quality assurance
 
-# all eventDate must be unique
-length(unique(picoeukclean$eventDate))
+# all date must be unique
+length(unique(picoclean$date))
 
 # summary stats above make sure abundance_picoeuk does not exceed
 # toomany <- picoeukclean %>% filter(abundance_picoeuk > 1000000)
@@ -107,14 +118,29 @@ length(unique(picoeukclean$eventDate))
 ## Column Header Organization and write files for upload to EDI
 ```{r}
 # # define headers for columns in desired order
-nes_lter_picoeuk_mvco_headers <- c("eventDate","concentration_picoeuk", "decimalLatitude","decimalLongitude","depth")
+nes_lter_pico_mvco_headers <- c("date","redeuk_leq_20um_cells_per_ml","syn_cells_per_ml", "latitude","longitude","depth")
 
 # reorder columns as necessary
-nes_lter_picoeuk_mvco <- picoeukclean[, nes_lter_picoeuk_mvco_headers]
+nes_lter_pico_mvco <- picoclean[, nes_lter_pico_mvco_headers]
 
 # write files for upload to EDI
-write.csv(nes_lter_picoeuk_mvco, file.path(dir, "/project_folder/nes-lter-picoeuk-mvco.csv"),
+write.csv(nes_lter_pico_mvco, file.path(dir, "/project_folder/nes-lter-pico-mvco-T.csv"),
           row.names = FALSE)
+
+```
+
+## use text editor to manually remove quotations and replace T with space in datetime
+## save new csv file without the -T 
+
+## compare to previously published version
+
+```{r}
+# remove the syn column and export a temporary csv to compare with diffchecker
+compare2old <- select(nes_lter_pico_mvco, -syn_cells_per_ml)
+write.csv(compare2old, file.path(dir, "/project_folder/compare2old.csv"),
+          row.names = FALSE)
+# previous version different column headers but exactly the same values
+# none missing, just added rows
 
 ```
 
@@ -131,12 +157,14 @@ Step 4: Inserting a custom NES-LTER parent project node
 ```{r}
 
 # define input for EML assembly
-metadata <- "nes-lter-picoeuk-mvco-info"  # xlsx file
+metadata <- "nes-lter-pico-mvco-info"  # xlsx file
 project_folder <- "project_folder/"
 # edi_data <- "nes-lter-picoeuk-mvco"  # data file created by above script
-edi_data <- "nes-lter-picoeuk-mvco-2018" # data file with quotations removed and T replaced by space in datetime using text editor
-file_descriptions <- "Data table with eukaryote picophytoplankton cell concentration and time sampled"
-pkg_id <- "knb-lter-nes.10.1"
+# use text editor to manually remove quotations and replace T with space in datetime
+# save new csv file without the -T
+edi_data <- "nes-lter-pico-mvco" # manually edited data file
+file_descriptions <- "Data table with picoeuk and Syn cell concentration and time sampled"
+pkg_id <- "knb-lter-nes.10.2"
 
 # Make EML Templates
 # copy abstract, additional_info, and methods txt files into project_folder
@@ -149,15 +177,15 @@ xlsx_to_template(metadata.path = paste0(dir, metadata),
 
 # Data Coverage
 # isolate date and geospatial columns for input
-date_col <- as.Date(picoeukclean$eventDate)
-lat_col <- picoeukclean$decimalLatitude
-lon_col <- picoeukclean$decimalLongitude
+date_col <- as.Date(picoclean$date)
+lat_col <- picoclean$latitude
+lon_col <- picoclean$longitude
 # run function to determine geospatial and temporal coverage
 coverage <- data_coverage(dates = date_col, lat = lat_col, lon = lon_col)
 
 # Make EML
 make_eml(path = paste0(dir, project_folder),
-         dataset.title = "Abundance of eukaryote picophytoplankton from a moored submersible flow cytometer at Martha's Vineyard Coastal Observatory, ongoing since 2003",
+         dataset.title = "Abundance of eukaryote picophytoplankton and Synechococcus from a moored submersible flow cytometer at Martha's Vineyard Coastal Observatory, ongoing since 2003 (NES-LTER since 2017)",
          data.table = paste0(edi_data, ".csv"),
          data.table.description = file_descriptions,
          temporal.coverage = c(coverage$startdate, coverage$enddate),
