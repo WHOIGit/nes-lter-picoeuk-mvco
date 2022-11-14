@@ -4,7 +4,9 @@ phytoplankton	LTER Controlled Vocabulary
 abundance	LTER Controlled Vocabulary
 marine	LTER Controlled Vocabulary
 oceanography	LTER Controlled Vocabulary
-eukaryote picophytoplankton	SeaDataCloud Flow Cytometry Standardised Cluster Names
+Red only fluorescing eukaryote picophytoplankton	Marine Microbial Flow Cytometry Standardised Group Names
+Red only fluorescing eukaryote nanophytoplankton	Marine Microbial Flow Cytometry Standardised Group Names
+Orange fluorescing prokaryote picophytoplankton	Marine Microbial Flow Cytometry Standardised Group Names
 biological data	NODC Data Types Thesaurus
 phytoplankton	NODC Data Types Thesaurus
 biological	NODC Observation Types Thesaurus

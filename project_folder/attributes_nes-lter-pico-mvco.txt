@@ -1,0 +1,7 @@
+attributeName	attributeDefinition	class	unit	dateTimeFormatString	missingValueCode	missingValueCodeExplanation
+date	date and time in UTC for the sampling event http://rs.tdwg.org/dwc/terms/eventDate	Date		YYYY-MM-DD hh:mm:ss	NaN	Missing value
+redeuk_leq_20um_cells_per_ml	abundance per unit volume of eukaryote picophytoplankton including those that exceed the typical picoplankton size http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ http://vocab.nerc.ac.uk/collection/F02/current/F0200004/ http://vocab.nerc.ac.uk/collection/F02/current/F0200005/	numeric	numberPerMilliliter		NaN	Missing value
+syn_cells_per_ml	abundance per unit volume of Synechococcus equivalent to Orange fluorescing prokaryote picophytoplankton http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ https://vocab.nerc.ac.uk/collection/F02/current/F0200003/	numeric	numberPerMilliliter		NaN	Missing value
+latitude	geographic latitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLatitude	numeric	degree		NaN	Missing value
+longitude	geographic longitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLongitude	numeric	degree		NaN	Missing value
+depth	depth of sample below sea surface http://vocab.nerc.ac.uk/collection/P09/current/DEPH/	numeric	meter		NaN	Missing value
