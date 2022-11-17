@@ -5,9 +5,9 @@ The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)
 
 # Data processing
 
-Data processing involved classifying observations as eukaryote picoplankton based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time of sampling needed to be corrected from local to UTC for some of the early years in the time series. 
+Data processing involved classifying observations as either Synechococcus or picoeukaryotes based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time of sampling needed to be corrected from local to UTC for some of the early years in the time series. 
 These data serve as input to a division rate model by Fowler et al., 2020, http://doi.org/10.5281/zenodo.3708062.
-These data serve as the raw data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.
+These data serve as the input data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.
 
 # Additional data cleaning and quality assurance
 
