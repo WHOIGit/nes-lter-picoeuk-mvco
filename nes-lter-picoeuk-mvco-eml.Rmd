@@ -16,24 +16,25 @@ rm(list = ls())
 # set environment timezone to UTC
 Sys.setenv(TZ = "UTC")
 
-# assign relative path to directory
-# dir <- "/Users/sbeaulieu/Desktop/github/WHOIGit/nes-lter-picoeuk-mvco/" 
-dir <- "/Users/sbeaulieu/Desktop/github/nes-lter-picoeuk-mvco/"
-# set as working directory
-setwd(dir)
-
-# define source for functions developed for the EDI packaging workflow
-source("edi-utilities.R")
-
 # install necessary libraries
 # install.packages("devtools")
+# Install from GitHub
+# install_github("EDIorg/dataCleanr")
 # install_github("EDIorg/EMLassemblyline")
-# remotes::install_github("EDIorg/dataCleanr")
 
-# define R packages to require
-libs <- c("tidyverse", "readxl", "lubridate", "devtools", "EMLassemblyline", "EML", "maps", "xml2", "dataCleanr")
-# load libraries
-lapply(libs, require, character.only = TRUE)
+library(EMLassemblyline)
+library(ediutilities)
+library(here)
+library(lubridate)
+library(tidyverse)
+library(dataCleanr)
+require(readxl)
+require(lubridate)
+require(devtools)
+require(EML)
+require(maps)
+require(xml2)
+
 ```
 
 ## Load data table revise column headers and add columns here
@@ -49,7 +50,6 @@ pico <- read_csv("AllPicos_Cellsperml.csv")  # data file inclusive of Syn and pi
 picoclean <- filter_all(pico, all_vars(!is.na(.)))
 
 # convert picoeukclean$Time_UTC to ISO8601 format
-# library(dataCleanr)
 # newtime <- iso8601_convert(picoeukclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
 # newtime <- rename(newtime, Time_UTC = x)
 # picoeukclean <- full_join(picoeukclean, newtime, by = "Time_UTC")
@@ -123,22 +123,15 @@ nes_lter_pico_mvco_headers <- c("date","redeuk_leq_20um_cells_per_ml","syn_cells
 # reorder columns as necessary
 nes_lter_pico_mvco <- picoclean[, nes_lter_pico_mvco_headers]
 
-# write files for upload to EDI
-write.csv(nes_lter_pico_mvco, file.path(dir, "/project_folder/nes-lter-pico-mvco-T.csv"),
-          row.names = FALSE)
-
 ```
-
-## use text editor to manually remove quotations and replace T with space in datetime
-## save new csv file without the -T 
 
 ## compare to previously published version
 
 ```{r}
 # remove the syn column and export a temporary csv to compare with diffchecker
 compare2old <- select(nes_lter_pico_mvco, -syn_cells_per_ml)
-write.csv(compare2old, file.path(dir, "/project_folder/compare2old.csv"),
-          row.names = FALSE)
+write.csv(compare2old, file.path(here(), "compare2old.csv"),
+          row.names = FALSE, , quote = FALSE)
 # previous version different column headers but exactly the same values
 # none missing, just added rows
 
@@ -158,22 +151,13 @@ Step 4: Inserting a custom NES-LTER parent project node
 
 # define input for EML assembly
 metadata <- "nes-lter-pico-mvco-info"  # xlsx file
-project_folder <- "project_folder/"
-# edi_data <- "nes-lter-picoeuk-mvco"  # data file created by above script
-# use text editor to manually remove quotations and replace T with space in datetime
-# save new csv file without the -T
-edi_data <- "nes-lter-pico-mvco" # manually edited data file
+edi_filename <- "nes-lter-pico-mvco" # manually edited data file
 file_descriptions <- "Data table with picoeuk and Syn cell concentration and time sampled"
 pkg_id <- "knb-lter-nes.10.2"
 
 # Make EML Templates
-# copy abstract, additional_info, and methods txt files into project_folder
-# or else this next step will produce empty files
 
-xlsx_to_template(metadata.path = paste0(dir, metadata),
-                 output.path = paste0(dir, project_folder),
-                 edi.filename = edi_data,
-                 rights = "CCBY")
+excel_to_template(here(metadata), edi_filename, rights='CCBY')
 
 # Data Coverage
 # isolate date and geospatial columns for input
@@ -184,9 +168,10 @@ lon_col <- picoclean$longitude
 coverage <- data_coverage(dates = date_col, lat = lat_col, lon = lon_col)
 
 # Make EML
-make_eml(path = paste0(dir, project_folder),
+make_eml(path = here(),
          dataset.title = "Abundance of eukaryote picophytoplankton and Synechococcus from a moored submersible flow cytometer at Martha's Vineyard Coastal Observatory, ongoing since 2003 (NES-LTER since 2017)",
-         data.table = paste0(edi_data, ".csv"),
+         data.table.name = edi_filename,
+         data.table = paste0(edi_filename, ".csv"),
          data.table.description = file_descriptions,
          temporal.coverage = c(coverage$startdate, coverage$enddate),
          geographic.description = "Martha's Vineyard Coastal Observatory",
@@ -197,8 +182,8 @@ make_eml(path = paste0(dir, project_folder),
          package.id = pkg_id)
 
 # Insert Custom Project Node
-project_insert(edi_pkg = pkg_id, 
-               xml.path = paste0(dir, project_folder))
+project_insert(edi_pkg = pkg_id)
+
 ```
 
 ## Add semantic annotations to EML 2.2

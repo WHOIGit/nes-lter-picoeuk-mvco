@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="knb-lter-nes.10.2" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
+  <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
+    <allow>
+      <principal>uid=NES,o=LTER,dc=ecoinformatics,dc=org</principal>
+      <permission>all</permission>
+    </allow>
+    <allow>
+      <principal>public</principal>
+      <permission>read</permission>
+    </allow>
+  </access>
+  <dataset>
+    <title>Abundance of eukaryote picophytoplankton and Synechococcus from a moored submersible flow cytometer at Martha's Vineyard Coastal Observatory, ongoing since 2003 (NES-LTER since 2017)</title>
+    <creator>
+      <individualName>
+        <givenName>Heidi</givenName>
+        <givenName>M</givenName>
+        <surName>Sosik</surName>
+      </individualName>
+      <organizationName>Northeast U.S. Shelf LTER</organizationName>
+      <electronicMailAddress>hsosik@whoi.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-4591-2842</userId>
+    </creator>
+    <creator>
+      <individualName>
+        <givenName>Robert</givenName>
+        <givenName>J</givenName>
+        <surName>Olson</surName>
+      </individualName>
+      <organizationName>Woods Hole Oceanographic Institution</organizationName>
+      <electronicMailAddress>rolson@whoi.edu</electronicMailAddress>
+    </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Alexi</givenName>
+        <surName>Shalapyonok</surName>
+      </individualName>
+      <organizationName>Northeast U.S. Shelf LTER</organizationName>
+      <electronicMailAddress>ashalapyonok@whoi.edu</electronicMailAddress>
+      <role>technician</role>
+    </associatedParty>
+    <associatedParty>
+      <individualName>
+        <givenName>E. Taylor</givenName>
+        <surName>Crockford</surName>
+      </individualName>
+      <organizationName>Northeast U.S. Shelf LTER</organizationName>
+      <electronicMailAddress>ecrockford@whoi.edu</electronicMailAddress>
+      <role>technician</role>
+    </associatedParty>
+    <associatedParty>
+      <individualName>
+        <givenName>Bethany</givenName>
+        <givenName>L.F.</givenName>
+        <surName>Stevens</surName>
+      </individualName>
+      <organizationName>Northeast U.S. Shelf LTER</organizationName>
+      <electronicMailAddress>bstevens@whoi.edu</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0001-8655-7253</userId>
+      <role>metadataProvider</role>
+    </associatedParty>
+    <associatedParty>
+      <individualName>
+        <givenName>Kristen</givenName>
+        <surName>Hunter-Cevera</surName>
+      </individualName>
+      <organizationName>Lawrence Berkeley National Laboratory</organizationName>
+      <electronicMailAddress>khuntercevera@gmail.com</electronicMailAddress>
+      <userId directory="https://orcid.org">https://orcid.org/0000-0002-0306-0346</userId>
+      <role>metadataProvider</role>
+    </associatedParty>
+    <pubDate>2023-03-03</pubDate>
+    <abstract>
+      <para>This is a 19-year time series of the abundance of eukaryote picophytoplankton and Synechococcus at 4 meters depth at the Martha's Vineyard Coastal Observatory, about 3 km south of Katama Beach, Edgartown, Massachusetts, USA. Picophytoplankton were sensed in situ by a submersible flow cytometer (FlowCytobot, or FCB). Sampling frequency was continuous at approximately 20-minute intervals binned to hourly resolution with some exceptions (e.g., winter in some years). This time series is ongoing for Northeast U.S. Shelf Long-Term Ecological Research (NES-LTER).</para>
+    </abstract>
+    <keywordSet>
+      <keyword>populations</keyword>
+      <keywordThesaurus>LTER Core Research Areas</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>phytoplankton</keyword>
+      <keyword>abundance</keyword>
+      <keyword>marine</keyword>
+      <keyword>oceanography</keyword>
+      <keywordThesaurus>LTER Controlled Vocabulary</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>Red only fluorescing eukaryote picophytoplankton</keyword>
+      <keyword>Red only fluorescing eukaryote nanophytoplankton</keyword>
+      <keyword>Orange fluorescing prokaryote picophytoplankton</keyword>
+      <keywordThesaurus>Marine Microbial Flow Cytometry Standardised Group Names</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>biological data</keyword>
+      <keyword>phytoplankton</keyword>
+      <keywordThesaurus>NODC Data Types Thesaurus</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>biological</keyword>
+      <keyword>continuous</keyword>
+      <keyword>plankton</keyword>
+      <keywordThesaurus>NODC Observation Types Thesaurus</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>fixed platform</keyword>
+      <keywordThesaurus>NODC Platform Names Thesaurus</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>flow cytometry</keyword>
+      <keywordThesaurus>Global Change Master Directory (GCMD) Instrument Keywords</keywordThesaurus>
+    </keywordSet>
+    <keywordSet>
+      <keyword>Northwest Atlantic Ocean</keyword>
+      <keywordThesaurus>SeaVoX water bodies</keywordThesaurus>
+    </keywordSet>
+    <intellectualRights>
+      <para>This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data ("Data User" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available "as is." The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.
+</para>
+    </intellectualRights>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Martha's Vineyard Coastal Observatory</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-70.5667</westBoundingCoordinate>
+          <eastBoundingCoordinate>-70.5667</eastBoundingCoordinate>
+          <northBoundingCoordinate>41.325</northBoundingCoordinate>
+          <southBoundingCoordinate>41.325</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2003-05-10</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2022-04-11</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <maintenance>
+      <description>ongoing</description>
+    </maintenance>
+    <contact>
+      <organizationName>Northeast U.S. Shelf LTER</organizationName>
+      <positionName>Nes-Lter Information Manager</positionName>
+      <electronicMailAddress>lter-nes-info@whoi.edu</electronicMailAddress>
+    </contact>
+    <methods>
+      <methodStep>
+        <description>
+          <para># Data acquisition</para>
+          <para>Data were acquired by a moored submersible flow cytometer (FlowCytobot, or FCB) that was mounted on the offshore tower at Martha's Vineyard Coastal Observatory. Sampling frequency was continuous at approximately 20-minute intervals with some time intervals missing usually during winter but also when the observatory was being serviced between Sept. 2018 and Nov. 2019.
+The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)00003-7) is used to count cells for populations of photoautotrophs (Synechococcus and picoeukaryotes). The FCB automatically runs bead samples approximately once per day. Data for picoeukaryotes include small eukaryotes that exceed the typical picoplankton size.</para>
+          <para># Data processing</para>
+          <para>Data processing involved classifying observations as either Synechococcus or picoeukaryotes based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time of sampling needed to be corrected from local to UTC for some of the early years in the time series. 
+These data serve as input to a division rate model by Fowler et al., 2020, http://doi.org/10.5281/zenodo.3708062.
+These data serve as the input data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.</para>
+          <para># Additional data cleaning and quality assurance</para>
+          <para>Additional data cleaning and metadata template assembly to align with SeaDataCloud SDN data management protocols for Flow Cytometer data were performed with code available on GitHub: https://github.com/WHOIGit/nes-lter-picoeuk-mvco. We added attributes to provide spatial context to the data table and assured that the temporal coverage and values for cell concentration were within expected ranges.</para>
+          <para># Differences from previous versions</para>
+          <para>Although the definition changed for the previously used column header concentration_picoeuk, data from the previous version of this package are equivalent to those contained in this new version.
+This new version adds the abundance of Synechococcus; a previous version of these data is available at: Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7. 
+For years 2003, 2004, and 2006, this dataset is a new version of previously published data available in NOAA NCEI Oceanographic Data Archive: NODC Accession 0002299, NODC Accession 0002722, NODC Accession 0036656.
+</para>
+        </description>
+      </methodStep>
+    </methods>
+    <project>
+      <title>Northeast U.S. Shelf LTER</title>
+      <personnel>
+        <individualName>
+          <givenName>Heidi</givenName>
+          <surName>Sosik</surName>
+        </individualName>
+        <electronicMailAddress>hsosik@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0002-4591-2842</userId>
+        <role>Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Stace</givenName>
+          <surName>Beaulieu</surName>
+        </individualName>
+        <electronicMailAddress>sbeaulieu@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0002-2609-5453</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Changsheng</givenName>
+          <surName>Chen</surName>
+        </individualName>
+        <electronicMailAddress>c1chen@umassd.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0001-8715-6101</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Rubao</givenName>
+          <surName>Ji</surName>
+        </individualName>
+        <electronicMailAddress>rji@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0002-8839-5427</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Steven</givenName>
+          <surName>Lentz</surName>
+        </individualName>
+        <electronicMailAddress>slentz@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0001-7498-0281</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Joel</givenName>
+          <surName>Llopiz</surName>
+        </individualName>
+        <electronicMailAddress>jllopiz@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0002-7584-7471</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Susanne</givenName>
+          <surName>Menden-Deuer</surName>
+        </individualName>
+        <electronicMailAddress>smenden@uri.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0002-8434-4251</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Michael</givenName>
+          <surName>Neubert</surName>
+        </individualName>
+        <electronicMailAddress>mneubert@whoi.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0001-8820-5008</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Tatiana</givenName>
+          <surName>Rynearson</surName>
+        </individualName>
+        <electronicMailAddress>rynearson@uri.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0003-2951-0066</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <personnel>
+        <individualName>
+          <givenName>Rachel</givenName>
+          <surName>Stanley</surName>
+        </individualName>
+        <electronicMailAddress>rstanle2@wellesley.edu</electronicMailAddress>
+        <userId directory="https://orcid.org">https://orcid.org/0000-0003-4860-2476</userId>
+        <role>Co-Principal Investigator</role>
+      </personnel>
+      <abstract>
+        <para>The Northeast U.S. Shelf (NES) Long-Term Ecological Research (LTER) project integrates observations, experiments, and models to understand and predict how planktonic food webs are changing, and how those changes impact the productivity of higher trophic levels. The NES-LTER is co-located with the Northeast U.S. Continental Shelf Large Marine Ecosystem, spanning the Middle Atlantic Bight and Gulf of Maine. Our focal cross-shelf transect extends about 150 km southward from Martha’s Vineyard, MA, to just beyond the shelf break. Our overarching question is: How is climate change impacting the pelagic NES ecosystem and, in particular, affecting the relationship between compositional (e.g., species diversity and size structure) and aggregate (e.g., rates of primary production, and transfer of energy to important forage fish species) variability?</para>
+      </abstract>
+      <funding>
+        <para>NSF Award OCE-1655686</para>
+      </funding>
+    </project>
+    <dataTable>
+      <entityName>nes-lter-pico-mvco</entityName>
+      <entityDescription>Data table with picoeuk and Syn cell concentration and time sampled</entityDescription>
+      <physical>
+        <objectName>nes-lter-pico-mvco.csv</objectName>
+        <size unit="bytes">5519696</size>
+        <authentication method="MD5">2e680520e3850a42e3beb9815f896eb7</authentication>
+        <dataFormat>
+          <textFormat>
+            <numHeaderLines>1</numHeaderLines>
+            <recordDelimiter>\n</recordDelimiter>
+            <attributeOrientation>column</attributeOrientation>
+            <simpleDelimited>
+              <fieldDelimiter>,</fieldDelimiter>
+            </simpleDelimited>
+          </textFormat>
+        </dataFormat>
+      </physical>
+      <attributeList>
+        <attribute>
+          <attributeName>date</attributeName>
+          <attributeDefinition>date and time in UTC for the sampling event http://rs.tdwg.org/dwc/terms/eventDate</attributeDefinition>
+          <storageType>date</storageType>
+          <measurementScale>
+            <dateTime>
+              <formatString>YYYY-MM-DD hh:mm:ss</formatString>
+              <dateTimeDomain/>
+            </dateTime>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>redeuk_leq_20um_cells_per_ml</attributeName>
+          <attributeDefinition>abundance per unit volume of eukaryote picophytoplankton including those that exceed the typical picoplankton size http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ http://vocab.nerc.ac.uk/collection/F02/current/F0200004/ http://vocab.nerc.ac.uk/collection/F02/current/F0200005/</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>numberPerMilliliter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">43.78</minimum>
+                  <maximum exclusive="false">149439.6</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>syn_cells_per_ml</attributeName>
+          <attributeDefinition>abundance per unit volume of Synechococcus equivalent to Orange fluorescing prokaryote picophytoplankton http://vocab.nerc.ac.uk/collection/P01/current/SDBIOL01/ https://vocab.nerc.ac.uk/collection/F02/current/F0200003/</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>numberPerMilliliter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">0</minimum>
+                  <maximum exclusive="false">402283.2</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>latitude</attributeName>
+          <attributeDefinition>geographic latitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLatitude</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">41.325</minimum>
+                  <maximum exclusive="false">41.325</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>longitude</attributeName>
+          <attributeDefinition>geographic longitude in decimal degrees http://rs.tdwg.org/dwc/terms/decimalLongitude</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>degree</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>real</numberType>
+                <bounds>
+                  <minimum exclusive="false">-70.5667</minimum>
+                  <maximum exclusive="false">-70.5667</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+        <attribute>
+          <attributeName>depth</attributeName>
+          <attributeDefinition>depth of sample below sea surface http://vocab.nerc.ac.uk/collection/P09/current/DEPH/</attributeDefinition>
+          <storageType>float</storageType>
+          <measurementScale>
+            <ratio>
+              <unit>
+                <standardUnit>meter</standardUnit>
+              </unit>
+              <numericDomain>
+                <numberType>natural</numberType>
+                <bounds>
+                  <minimum exclusive="false">4</minimum>
+                  <maximum exclusive="false">4</maximum>
+                </bounds>
+              </numericDomain>
+            </ratio>
+          </measurementScale>
+          <missingValueCode>
+            <code>NaN</code>
+            <codeExplanation>Missing value</codeExplanation>
+          </missingValueCode>
+        </attribute>
+      </attributeList>
+      <numberOfRecords>100771</numberOfRecords>
+    </dataTable>
+  </dataset>
+  <additionalMetadata>
+    <metadata>
+      <emlEditor>
+        <app>EMLassemblyline</app>
+        <release>3.5.5</release>
+      </emlEditor>
+    </metadata>
+  </additionalMetadata>
+</eml:eml>
