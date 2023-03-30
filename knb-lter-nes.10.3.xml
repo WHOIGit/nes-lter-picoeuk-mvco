@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="knb-lter-nes.10.2" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
+<eml:eml xmlns:eml="https://eml.ecoinformatics.org/eml-2.2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.2" packageId="knb-lter-nes.10.3" xsi:schemaLocation="https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd https://eml.ecoinformatics.org/eml-2.2.0/eml.xsd" system="edi">
   <access authSystem="https://pasta.edirepository.org/authentication" order="allowFirst" scope="document">
     <allow>
       <principal>uid=NES,o=LTER,dc=ecoinformatics,dc=org</principal>
@@ -70,7 +70,7 @@
       <userId directory="https://orcid.org">https://orcid.org/0000-0002-0306-0346</userId>
       <role>metadataProvider</role>
     </associatedParty>
-    <pubDate>2023-03-03</pubDate>
+    <pubDate>2023-03-30</pubDate>
     <abstract>
       <para>This is a 19-year time series of the abundance of eukaryote picophytoplankton and Synechococcus at 4 meters depth at the Martha's Vineyard Coastal Observatory, about 3 km south of Katama Beach, Edgartown, Massachusetts, USA. Picophytoplankton were sensed in situ by a submersible flow cytometer (FlowCytobot, or FCB). Sampling frequency was continuous at approximately 20-minute intervals binned to hourly resolution with some exceptions (e.g., winter in some years). This time series is ongoing for Northeast U.S. Shelf Long-Term Ecological Research (NES-LTER).</para>
     </abstract>

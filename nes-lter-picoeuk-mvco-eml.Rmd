@@ -153,7 +153,7 @@ Step 4: Inserting a custom NES-LTER parent project node
 metadata <- "nes-lter-pico-mvco-info"  # xlsx file
 edi_filename <- "nes-lter-pico-mvco" # manually edited data file
 file_descriptions <- "Data table with picoeuk and Syn cell concentration and time sampled"
-pkg_id <- "knb-lter-nes.10.2"
+pkg_id <- "knb-lter-nes.10.3"
 
 # Make EML Templates
 
