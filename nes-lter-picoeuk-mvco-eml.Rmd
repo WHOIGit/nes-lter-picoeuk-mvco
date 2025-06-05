@@ -1,7 +1,7 @@
 ---
 title: "NES-LTER picoeuk and Syn at MVCO"
-author: "Stace Beaulieu"
-date: "2022-11-08"
+author: "Stace Beaulieu, Kate Morkeski"
+date: "2025-06-05"
 output: html_document
 ---
 
@@ -10,30 +10,24 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(message = FALSE, warning = FALSE)
 
-# clear workspace for local development
-rm(list = ls())
-
 # set environment timezone to UTC
 Sys.setenv(TZ = "UTC")
 
-# install necessary libraries
-# install.packages("devtools")
 # Install from GitHub
-# install_github("EDIorg/dataCleanr")
+#library(devtools)
 # install_github("EDIorg/EMLassemblyline")
 
 library(EMLassemblyline)
 library(ediutilities)
 library(here)
-library(lubridate)
-library(tidyverse)
-library(dataCleanr)
-require(readxl)
-require(lubridate)
-require(devtools)
-require(EML)
-require(maps)
-require(xml2)
+#library(lubridate)
+library(compareDF)
+library(dplyr)
+#library(readr)
+#library(lubridate)
+#library(EML)
+library(maps)
+#library(xml2)
 
 ```
 
@@ -41,45 +35,25 @@ require(xml2)
 
 ```{r}
 
-# picoeuk <- read_csv("Picoeukaryote_Cellsperml.csv") # data file through 2016
-# picoeuk <- read_csv("Picoeukaryote_Raw_Counts.csv")  # data file through 2018
-pico <- read_csv("AllPicos_Cellsperml.csv")  # data file inclusive of Syn and picoeuk
+pico <- read_csv("AllPicos_Cellsperml_June2025.csv")  # data file inclusive of Syn and picoeuk
+pico$date <- as.POSIXct(pico$Time_UTC, format = "%d-%b-%Y %H:%M:%S", TZ ="UTC") 
+pico <- select(pico, -Time_UTC)
 
-# remove rows when entire row is NA
-# picoeukclean <- filter_all(picoeuk, all_vars(!is.na(.)))
-picoclean <- filter_all(pico, all_vars(!is.na(.)))
-
-# convert picoeukclean$Time_UTC to ISO8601 format
-# newtime <- iso8601_convert(picoeukclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
-# newtime <- rename(newtime, Time_UTC = x)
-# picoeukclean <- full_join(picoeukclean, newtime, by = "Time_UTC")
-newtime <- iso8601_convert(picoclean$Time_UTC, orders = 'dby HMS', return.format = TRUE)
-newtime <- rename(newtime, Time_UTC = x)
-picoclean <- full_join(picoclean, newtime, by = "Time_UTC")
-
-# Note the table does not have any remaining NaT or NaN
 # view summary stats
-summary(picoclean)
+summary(pico)
 
 # rename columns
-# picoeukclean <- rename(picoeukclean, eventDate = x_converted)
-# picoeukclean <- rename(picoeukclean, concentration_picoeuk = Picoeukaryote_Concentration_Cells_per_mL)
-picoclean <- rename(picoclean, date = x_converted)
-picoclean <- rename(picoclean, redeuk_leq_20um_cells_per_ml = Picoeukaryote_Concentration_Cells_per_mL)
-picoclean <- rename(picoclean, syn_cells_per_ml = Synechococcus_Concentration_Cells_per_mL)
+pico <- rename(pico, redeuk_leq_20um_cells_per_ml = Picoeukaryote_Concentration_Cells_per_mL)
+pico <- rename(pico, syn_cells_per_ml = Synechococcus_Concentration_Cells_per_mL)
 
 # add columns decimalLatitude, decimalLongitude, depth
-picoclean$latitude = 41.3250
-picoclean$longitude = -70.5667
-picoclean$depth = 4
-
-# strip extraneous columns Time_UTC and format
-picoclean <- select(picoclean, -Time_UTC, -format)
+pico$latitude = 41.3250
+pico$longitude = -70.5667
+pico$depth = 4
 
 # round abundance to 2 past decimal
-# picoeukclean$concentration_picoeuk <- round(picoeukclean$concentration_picoeuk, digits = 2)
-picoclean$redeuk_leq_20um_cells_per_ml <- round(picoclean$redeuk_leq_20um_cells_per_ml, digits = 2)
-picoclean$syn_cells_per_ml <- round(picoclean$syn_cells_per_ml, digits = 2)
+pico$redeuk_leq_20um_cells_per_ml <- round(pico$redeuk_leq_20um_cells_per_ml, digits = 2)
+pico$syn_cells_per_ml <- round(pico$syn_cells_per_ml, digits = 2)
 
 ```
 
@@ -93,8 +67,7 @@ Call the map_locs function from edi-utility.R to map the sampling locations. Per
 # Map Check
 # Note Package `maps` required for `map_data`
 
-map_locs(df = picoclean, xvar = "longitude", yvar = "latitude", region = "transect", colorvar = NULL)
-
+map_locs(df = pico, xvar = "longitude", yvar = "latitude", region = "transect", colorvar = NULL)
 
 ```
 
@@ -104,14 +77,13 @@ map_locs(df = picoclean, xvar = "longitude", yvar = "latitude", region = "transe
 # these steps in addition to summary stats for quality assurance
 
 # all date must be unique
-length(unique(picoclean$date))
+length(unique(pico$date))
 
 # summary stats above make sure abundance_picoeuk does not exceed
-# toomany <- picoeukclean %>% filter(abundance_picoeuk > 1000000)
+ toomany <- pico %>% filter(redeuk_leq_20um_cells_per_ml > 1000000)
 
 # summary stats above make sure no NAs in abundance
-# abundNA <- picoeukclean %>% filter(is.na(abundance_picoeuk))
-
+ abundNA <- pico %>% filter(is.na(redeuk_leq_20um_cells_per_ml))
 
 ```
 
@@ -121,19 +93,21 @@ length(unique(picoclean$date))
 nes_lter_pico_mvco_headers <- c("date","redeuk_leq_20um_cells_per_ml","syn_cells_per_ml", "latitude","longitude","depth")
 
 # reorder columns as necessary
-nes_lter_pico_mvco <- picoclean[, nes_lter_pico_mvco_headers]
+nes_lter_pico_mvco <- pico[, nes_lter_pico_mvco_headers]
+
+write.csv(nes_lter_pico_mvco, "nes-lter-pico-mvco.csv", row.names = FALSE)
 
 ```
 
 ## compare to previously published version
 
 ```{r}
-# remove the syn column and export a temporary csv to compare with diffchecker
-compare2old <- select(nes_lter_pico_mvco, -syn_cells_per_ml)
-write.csv(compare2old, file.path(here(), "compare2old.csv"),
-          row.names = FALSE, , quote = FALSE)
-# previous version different column headers but exactly the same values
-# none missing, just added rows
+
+v2 <-read_csv("nes-lter-pico-mvco_v2.csv")
+
+comparison <- compare_df(nes_lter_pico_mvco, v2)
+
+create_output_table(comparison, output_type='xlsx', file_name='version_comparison.xlsx')
 
 ```
 
@@ -151,19 +125,19 @@ Step 4: Inserting a custom NES-LTER parent project node
 
 # define input for EML assembly
 metadata <- "nes-lter-pico-mvco-info"  # xlsx file
-edi_filename <- "nes-lter-pico-mvco" # manually edited data file
+edi_filename <- "nes-lter-pico-mvco" 
 file_descriptions <- "Data table with picoeuk and Syn cell concentration and time sampled"
 pkg_id <- "knb-lter-nes.10.3"
 
 # Make EML Templates
 
-excel_to_template(here(metadata), edi_filename, rights='CCBY')
+excel_to_template(here(metadata), edi_filename, rights='CCBY', file_type=".md")
 
 # Data Coverage
 # isolate date and geospatial columns for input
-date_col <- as.Date(picoclean$date)
-lat_col <- picoclean$latitude
-lon_col <- picoclean$longitude
+date_col <- as.Date(pico$date)
+lat_col <- pico$latitude
+lon_col <- pico$longitude
 # run function to determine geospatial and temporal coverage
 coverage <- data_coverage(dates = date_col, lat = lat_col, lon = lon_col)
 
@@ -182,7 +156,7 @@ make_eml(path = here(),
          package.id = pkg_id)
 
 # Insert Custom Project Node
-project_insert(edi_pkg = pkg_id)
+project_insert(pkg_id, "parent_project_NESI-II.txt")
 
 ```
 

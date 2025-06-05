@@ -5,16 +5,21 @@ The FCB (described by Olson et al., 2003, https://doi.org/10.1016/S0967-0637(03)
 
 # Data processing
 
-Data processing involved classifying observations as either Synechococcus or picoeukaryotes based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. Time of sampling needed to be corrected from local to UTC for some of the early years in the time series. 
-These data serve as input to a division rate model by Fowler et al., 2020, http://doi.org/10.5281/zenodo.3708062.
-These data serve as the input data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.
+Data processing involved classifying observations as either Synechococcus or picoeukaryotes based on their scattering and fluorescence signatures, calculating concentrations based on the volume of water sampled at each time point, and binning to hourly resolution with code available in GitHub: https://github.com/hsosik/NES-LTER/tree/master/fcb_processing. 
 
 # Additional data cleaning and quality assurance
 
 Additional data cleaning and metadata template assembly to align with SeaDataCloud SDN data management protocols for Flow Cytometer data were performed with code available on GitHub: https://github.com/WHOIGit/nes-lter-picoeuk-mvco. We added attributes to provide spatial context to the data table and assured that the temporal coverage and values for cell concentration were within expected ranges.
 
-# Differences from previous versions
+# Differences from previous version
 
-Although the definition changed for the previously used column header concentration_picoeuk, data from the previous version of this package are equivalent to those contained in this new version.
-This new version adds the abundance of Synechococcus; a previous version of these data is available at: Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7. 
+Version 3 includes two additional years of data as well as the implementation of additional quality control measures, resulting the adjustment of abundance values throughout the data set.
+
+# Related publications
+
+These data serve as input to a division rate model by Fowler et al., 2020, http://doi.org/10.5281/zenodo.3708062.
+These data serve as the input data for the derived data products in Fowler et al., 2020, https://doi.org/10.1073/pnas.1918439117.
+
+A previous version of the Synechococcus data is available at: Hunter-Cevera et al., 2017, https://doi.org/10.5061/dryad.jm8s7
 For years 2003, 2004, and 2006, this dataset is a new version of previously published data available in NOAA NCEI Oceanographic Data Archive: NODC Accession 0002299, NODC Accession 0002722, NODC Accession 0036656.
+
