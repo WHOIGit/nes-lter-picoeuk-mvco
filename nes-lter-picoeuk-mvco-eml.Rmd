@@ -20,14 +20,10 @@ Sys.setenv(TZ = "UTC")
 library(EMLassemblyline)
 library(ediutilities)
 library(here)
-#library(lubridate)
 library(compareDF)
 library(dplyr)
-#library(readr)
-#library(lubridate)
-#library(EML)
+library(readr)
 library(maps)
-#library(xml2)
 
 ```
 
@@ -103,7 +99,7 @@ write.csv(nes_lter_pico_mvco, "nes-lter-pico-mvco.csv", row.names = FALSE)
 
 ```{r}
 
-v2 <-read_csv("nes-lter-pico-mvco_v2.csv")
+v2 <-read_csv("v2/nes-lter-pico-mvco_v2.csv")
 
 comparison <- compare_df(nes_lter_pico_mvco, v2)
 
